@@ -1,0 +1,890 @@
+#string concatenation
+----------------------
+str1='hi'
+str2='karishma'
+print(str1+'\n'+str2)
+
+
+#input statements
+------------------
+1)
+a=int(input())
+b=int(input())
+c=a+b
+print("the sum is"+ str(c))
+
+input:2
+3
+output:5
+
+2)
+a=input()
+b=input()
+c=a+b
+print("the sum is"+ str(c))
+
+input:2
+3
+output:23
+
+
+#to find sum with a single statement
+-------------------------------------
+
+print(int(input())+int(input()))
+
+2
+3
+5
+
+
+#integer is not iteratable - so we use type conversion - so we use str(number)- but if we want to print as a number give int(i)
+--------------------------------------------------------------------------------------------------------------------------------
+
+number=12345
+for i in str(number):   
+    print(int(i))
+
+
+
+a=[1,2,3]
+b=[3,4,5]
+a.append(b)      #it puts the elements into the list
+print(a)
+
+[1, 2, 3, [3, 4, 5]]
+
+c=[1,2,3]
+d=[3,4,5]
+c.extend(d)          # this will expand the list
+print(c)
+
+[1, 2, 3, 3, 4, 5]
+
+
+
+#convert a string into a list - then print as a a c c c c like that - then remove duplicates
+---------------------------------------------------------------------------------------------
+
+str1='Accenture'
+list1=[]
+for i in str1:
+    list1.append(i)
+    list1.append(i)
+print(list1)         
+
+['A', 'A', 'c', 'c', 'c', 'c', 'e', 'e', 'n', 'n', 't', 't', 'u', 'u', 'r', 'r', 'e', 'e']
+
+
+list1=list(dict.fromkeys(list1))  # to remove duplicates
+print(list1)
+
+['A', 'c', 'e', 'n', 't', 'u', 'r']
+
+
+
+# to remove one pair of duplicates
+-----------------------------------
+
+str1='Accenture'
+list1=[]
+for i in str1:
+    if i not in list1:
+        list1.append(i)
+        list1.append(i)
+print(list1) 
+
+
+OUTPUT:
+['A', 'A', 'c', 'c', 'e', 'e', 'n', 'n', 't', 't', 'u', 'u', 'r', 'r']
+
+
+
+OR
+
+
+str1='Accenture'
+list1=[]
+for i in str1:
+    if i not in list1:
+        list1.extend(i*2)
+print(list1)
+
+
+OUTPUT:
+['A', 'A', 'c', 'c', 'e', 'e', 'n', 'n', 't', 't', 'u', 'u', 'r', 'r']
+
+
+
+#for loop
+-----------
+a=int(input("enter start number"))
+b=int(input("enter end number"))
+for i in range(a,b):
+    print(i)
+
+output:
+enter start number 1
+enter end number 5
+1
+2
+3
+4
+
+
+
+#sum of even numbers and odd numbers from 1 to 10
+---------------------------------------------------
+
+sumodd=0
+sumeve=0
+for i in range(1,11):
+    if i%2==0:
+        sumeve=sumeve+i
+
+    else:
+        sumodd=sumodd+i
+
+print("sum of even numbers",sumeve)
+print("sum of odd numbers",sumodd)
+
+
+output:
+sum of even numbers 30
+sum of odd numbers 25
+
+
+#strings are immutable
+-----------------------
+
+str1='hello'
+print(str1[2])
+str1[2]='o'
+print(str1[2])
+
+output:
+str1[2]='o'
+TypeError: 'str' object does not support item assignment
+
+
+
+#print length of string
+--------------------------
+str1='hello'
+count=0                                  #same can be done for list
+for i in str1:
+    count=count+1
+
+print(count)
+
+
+
+#occurence of e
+----------------
+str1='ACCENTURE'
+count=0
+for i in str1:
+    if i=='E':
+        count=count+1
+print(count)
+
+output:
+2
+
+
+# the above pgm with modification
+----------------------------------
+
+for i in str1:
+    count=0             # here count is given in for loop - so again and again count is initialised to 0
+    if i=='E':
+        count=count+1
+print(count)
+
+
+
+#create a list runtime with even numbers less than 10
+------------------------------------------------------
+
+list1=[]
+for i in range(0,11,2):
+   list1.append(i)
+print(list1)
+
+output:
+[0,2,4,6,8]
+
+OR
+
+list1=[]
+for i in range(1,11):
+    if i%2==0:
+        list1.append(i)
+print(list1)
+
+
+#number of characters and digits in a list
+--------------------------------------------
+
+list1=[1,'a',2,'b']
+intcnt=0
+charcnt=0
+for i in list1:
+    if type(i)==int:
+        intcnt=intcnt+1
+    else:
+        charcnt=charcnt+1
+print("int count",intcnt)
+print("char count",charcnt)
+
+output:
+2
+2
+
+
+#to find number of characters and digits [here all elements are strings]
+--------------------------------------------------------------------------
+
+charcnt=0
+digicnt=0
+list1=['1','a','2','b','A']
+for i in list1:
+    if ord(i)>=65 and ord(i)<=122:
+        charcnt=charcnt+1
+    else:
+        digicnt=digicnt+1
+print(charcnt)
+print(digicnt)
+
+output:
+3
+2
+
+LIST TO DICT:
+--------------
+
+list1=['five', 5, 'six', 6, 'seven', 7, 'seven', 7, 'nine', 9]
+keys=[]
+values=[]
+dictnew={}
+for i in list1:
+    if type(i)==str:
+        keys.append(i)
+    else:
+        values.append(i)
+
+print(keys)
+print(values)
+
+
+for k in range (0,len(values)):
+    dictnew[keys[k]]=values[k]
+print(dictnew)
+
+
+output:
+['five', 'six', 'seven', 'seven', 'nine']
+[5, 6, 7, 7, 9]
+{'five': 5, 'six': 6, 'seven': 7, 'nine': 9}
+
+OR
+
+list1=['five', 5, 'six', 6, 'seven', 7, 'seven', 7, 'nine', 9]
+
+keys=[]
+values=[]
+dictnew={}
+for i in list1:
+    if type(i)==str:
+        keys.append(i)
+    else:
+        values.append(i)
+
+mn=zip(keys,values)
+dictnew=dict(mn)
+print(dictnew)
+
+OR
+
+list1=['five', 5, 'six', 6, 'seven', 7, 'seven', 7, 'nine', 9]
+dictnew={}
+keys=[]
+values=[]
+dictnew={}
+for i in list1:
+    if type(i)==str:
+        keys.append(i)
+    else:
+        values.append(i)
+print(keys)
+print(values)
+
+for j in range(0,len(keys)):
+    if keys[j] not in dictnew:
+        dictnew[keys[j]]=values[j]
+    else:
+        lis=[dictnew[keys[j]],values[j]]
+        dictnew[keys[j]]=lis
+
+print(dictnew)
+
+
+#print similar values for the same key
+---------------------------------------
+
+list1=['five', 5, 'six', 6, 'seven', 7, 'seven', 7, 'nine', 9]
+dictnew={}
+for k in range(0,len(list1),2):
+    if list1[k] in dictnew:
+        value=dictnew.get(list1[k])
+        dictnew[list1[k]]=[value,list1[k+1]]
+    else:
+        dictnew[list1[k]]=list1[k+1]
+print(dictnew)
+
+
+
+#take a list as input from user
+---------------------------------
+numlist=[]
+n = int(input("Enter a number"))
+for i in range(0,n):
+    element=int(input())
+    numlist.append(element)
+print(numlist)
+
+
+output:
+------
+Enter a number 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 1]
+
+
+#convert a STRING of decimal into a LIST and find sum
+-------------------------------------------------------
+
+str1=input("enter a string of numbers separated by comas")
+nums=[float(i) for i in str1.split(",")]                   # creates a list of floats spilt by ,
+print(nums)
+
+output for print(nums):
+------------------------
+#enter a string of numbers separated by comas1.23,3.4
+#[1.23, 3.4]
+
+
+
+print(sum(nums))                                          # sum() finds the sum of the elements in the list
+
+
+output:
+------
+enter a string of numbers separated by comas1.23,3.45,5.67
+10.35
+
+
+
+#PATTERNS:
+-----------
+
+for i in range(1,5):
+    for j in range(1,i):
+        print(j,end=" ")
+    print("\n")
+
+
+OUTPUT:
+------
+
+1 
+
+1 2 
+
+1 2 3 
+
+
+
+#PATTERNS:
+----------
+
+for i in range(1,5):
+    for j in range(1,i):
+        print('*',end=" ")
+    print("\n")
+
+
+OUTPUT:
+-------
+
+*
+
+* *
+
+* * *
+
+
+#PATTERNS:
+-----------
+
+for i in range(1,5):
+    for j in range(1,5):
+        print('*',end=" ")
+    print("\n")
+
+
+
+OUTPUT:
+------
+* * *
+* * *
+* * *
+
+
+
+WHILE LOOP:
+------------
+
+i=1
+while(i<5):
+    print(i)
+    i=i+1   # IF THIS ISNT GIVEN - INFINITE LOOP WILL COME AS OUTPUT
+
+
+
+
+#print 1 2 bye [USING BREAK STATEMNET]
+----------------------------------------
+
+for i in range(1,6):
+    if i==3:
+        break
+    print(i)
+print("bye")
+
+OR 
+
+for i in range(1,6):
+    if i==3:
+        print("you have reached the limit")                       # use case: enter passwrd wrong more than thrice - send error msg
+        print("bye")
+        break
+    else:
+        print(i)
+
+
+
+OR
+
+
+for i in range(1,6):
+    if i!=3:
+        print(i)
+    elif i == 3:
+        print("you have reached the limit")
+        print("bye")
+        break
+
+
+
+output:
+------
+1
+2
+you have reached the limit
+bye
+
+
+
+#CONTINUE STATEMENT [SKIP ONE NUMBER AND PRINT THE REST]
+---------------------------------------------------------
+
+for i in range(1,6):
+    if i==3:
+        continue
+    print(i)
+print("you have reached the limit")
+print("bye")
+
+
+OUTPUT:
+------
+1
+2
+4
+5
+you have reached the limit
+bye
+
+
+
+#FUNCTION:[WITHOUT ARGUMENTS]
+-------------------------------
+
+def sayhello():
+    print("hello")
+
+sayhello()
+
+
+OUTPUT:
+------
+hello
+
+
+
+#FUNCTION:[WITH ARGUMENTS]
+-------------------------------
+
+def printint(a):
+    print("my value is",a)
+
+printint(3)
+
+
+OUTPUT:
+------
+3
+
+
+
+#FUNCTION:  [HERE WE RETURN THE VALUE]
+---------------------------------------
+
+def status(a,b):
+    sum1=a+b
+    return sum1
+
+sum1=status(-1,-2)
+if sum1<0:
+    print("fail")
+else:
+    print("all the best")
+
+
+OUTPUT:
+------
+FAIL
+
+
+
+#FUNCTION:[WE RETURN TWO ARGUMENTS]
+-------------------------------------
+
+def sum(a,b):
+    c=a+b
+    return a,b
+
+c,d=sum(1,2)
+print(c)
+print(d)
+
+
+OUTPUT:
+------
+1
+2
+
+
+#FUNCTION:[function inside function]
+--------------------------------------
+
+def sum(a,b):
+    c=a+b
+    return c
+
+def total():
+    tot=0
+    c=sum(5,5)
+    if c==10:
+        tot=c+1
+        print(tot)
+
+total()
+
+
+AND
+
+def sum(a,b):
+    c=a+b
+    return a,b,c
+
+f,d,e=sum(1,2)
+print(f)
+print(d)
+print(e)
+
+
+output:
+-------
+1
+2
+3
+
+
+AND 
+
+
+def sum(a,b=2):
+    c=a+b
+    return a,b,c
+
+f,d,e=sum(1,)
+print(f)
+print(d)
+print(e)
+
+
+
+OUTPUT:
+------
+1
+2
+3
+
+
+
+
+#STRING to DICTIONARY [#input:string from user - output:count the charcetrs and print in dictionary]
+------------------------------------------------------------------------------------------------------
+
+string=input("Enter a string")
+strdict={}
+for i in string:
+    if i in strdict:
+        strdict[i]=strdict[i]+1   # in a dict u can update by giving dictname[value]=key - this will update it - if tht is nt present it will craete a new pair
+    else:
+        strdict[i]=1    # by giving this it will automatically create a dictionary with i as values and 1 as key
+print(strdict)
+
+
+
+OUTPUT:
+-------
+Enter a stringACCENTURE
+{'A': 1, 'C': 2, 'E': 2, 'N': 1, 'T': 1, 'U': 1, 'R': 1}
+
+
+
+
+#input:string from user - output:count the charcetrs and print in dictionary
+
+string=input("Enter a string")
+strdict={}
+for i in string:
+    if i in strdict:
+        strdict[i]=strdict[i]+1   # in a dict u can update by giving dictname[value]=key - this will update it - if tht is nt present it will craete a new pair
+    else:
+        strdict[i]=1    # by giving this it will automatically create a dictionary with i as values and 1 as key
+print(strdict)
+
+
+
+#print the occurence of the charceters in the string
+--------------------------------------------------------
+
+temp=''
+for i in string:
+    temp=temp+str(i)+str(strdict.get(i))  # .get will get the values-
+print(temp)
+
+
+
+#import:
+--------
+
+import math
+print("the square root of num",math.sqrt(2))
+
+
+
+how to create own module and import that module like import math
+-----------------------------------------------------------------
+modulename.methodname
+
+
+IN ONE WINDOW TYPE THE BELOW:
+
+def addition(a,b):
+    return a+b
+def sub(a,b):
+    return a-b
+
+IN ANOTHER WINDOW TYPE THE BELOW:
+import add                            # HERE WE IMPORT THE FUCNTIONS FROM ADD PYTHON FILE
+print(add.addition(1,2))    #GIVE MODULENAME.METHODNAME
+print(add.sub(12,4))
+
+
+
+to import specific methods from the file we give:
+----------------------------------------------------
+
+from add import addition
+print("the final res is",addition(2,1))
+
+
+
+#program to set a range and print sequence using import:
+-------------------------------------------------------
+
+IN ONE WINDOW:
+def range1(a,b):
+    for i in range(a,b):
+        print(i)
+
+
+IN ANOTHER WINDOW:
+import range
+range.range1(2,11)
+
+
+
+FUNCTIONS:
+-----------
+
+we cannot call a function before the function definition - it performs bottom to top approach
+
+in python all arguments are passed by reference
+
+numbers=[1,2,3,4]
+def add_ele(numbers):
+    numbers.append(6)
+    print(numbers)
+
+add_ele(numbers)
+print(numbers)
+
+
+output:
+-------
+[1, 2, 3, 4, 6]
+[1, 2, 3, 4, 6]
+
+
+
+TYPES OF ARGUMENTS:
+-------------------
+
+1.Required arguments:
+
+def fun(name):
+     print(name)
+
+fun()  # here we must give an argument compulsorily- so we must give arguments else will throw error
+
+
+2.Keyword argument
+
+
+def fun(name,age=50):
+    print(name)
+    print(age)
+
+fun(name="kachu",age=70)   # keywrd is age here
+fun(name="abi")
+
+
+
+3.Variable length argument
+
+we use this to give any number of arguments
+
+def calc(function,*arg):
+     if function=="add":  # if it is add function - it willl store the arguments in a list and calculate sum
+         for i in arg:          #list is created with [5,10] and [5,5,3,4]
+             #calcaulate sum here
+
+calc("add",5,10)
+calc("add",5,5,3,4)
+
+
+4.Default argument
+
+def tutorial(name,session='python'):
+    print(name)
+    print(session)
+
+tutorial("kachu",session="c++")
+tutorial("abichu")
+
+
+output:
+------
+kachu
+c++
+abichu
+python
+
+
+5.variable keyword argument:
+------------------------------
+
+
+def info(name,**details):     # **details - keywrd arugument - the arguments are stored in a dictionary
+    print(details)
+    print(details['age'])
+    print(details['qualification'])
+
+info(name='kachu',age=19,qualification='be')
+
+{'age': 19, 'qualification': 'be'}
+19
+be
+
+
+SCOPE OF THE VARAIBLE:
+----------------------
+
+a=5  #global
+def fun():
+    b=10    #local
+    print(a)
+    print(b)
+
+fun()
+
+
+#to change global value
+
+a=5
+def fun():
+    global a
+    a=15
+    
+fun()
+
+
+STRING FUNCTIONS:
+------------------
+
+
+list1=['sol','pol']
+list2=['044','23345']
+print("-".join(list1))
+print("-".join(list2))
+
+output:
+-------
+
+sol-pol
+044-23345
+
+
+REVERSE:
+-------
+num=[1,2,3,4,5]
+print(num.reverse())  #will give None
+print(num)   # will give the reversed list
+
+print(list(reversed(num))) # will give reversed list
+
