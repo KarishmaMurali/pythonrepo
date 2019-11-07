@@ -1,0 +1,252 @@
+1) For the below binary number , count the Occurrence of sequence '101'  in  10101010100111101
+
+
+SOLN:
+----
+
+import re 
+
+input='10101010100111101'  
+result = re.findall('101', input)
+print(len(result))
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2) For the below matrix , calculate both the diagonal and print the value.(Hint: consider each row as a list object)
+
+3 8 7
+
+8 7 9
+
+1 6 0
+
+
+
+SOLN:
+-----
+
+matlist=[[3,8,7],[8,7,9],[1,6,0]]
+n=3
+sum1=0
+sum2=0
+len=n-1
+for i in range(0,n):
+  for j in range(0,n):
+    if i==j:
+      sum1+=matlist[i][j]
+    if i+j==len:
+	    sum2+=matlist[i][j]
+
+print(sum1)
+print(sum2)
+
+
+--------------------------------------------------------------------------------------------------- 
+
+3)Rotate the above matrix by 90 degree anticlockwise
+
+hint :convert row to column and column to row
+
+
+SOLN:
+----
+
+matlist=[[1,2,3],[4,5,6],[7,8,9]]
+n=3
+for i in range(0,n):
+  for j in range(0,n):
+    print(matlist[j][i],end=" ")
+  print(" ")
+
+---------------------------------------------------------------------------------------------------------------------------
+
+4) The string abcabcabc........ goes till 1111 . print the number of Occurrence of 'ca'
+
+
+SOLN:
+----
+
+str1='abc'
+strnew=''
+flag=0
+while(True):                              #infinite while loop
+  for letter in str1:
+    strnew=strnew+letter
+    if len(strnew)==1111:
+      flag=1
+      break
+  if flag==1:
+    break
+
+count=0
+for i in range(0,len(strnew)-1):
+  if strnew[i]=='c' and strnew[i+1]=='a':
+    count=count+1
+  
+print(count)
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+
+5) Convert the string as below.
+
+input : abcDEwQ
+
+output: ABCdeWq
+
+
+
+SOLN:
+----
+
+str1=input("Enter a string:")
+str2=''
+for i in str1:
+  if i.islower():
+    i=i.upper()
+    str2+=i
+  elif i.isupper():
+    i=i.lower()
+    str2+=i
+
+print(str2)
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+6) Find the ordered longest alphabetical sequence.
+
+ 
+
+abccdefabcdefae
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------ 
+
+7)Find the sum of multiples of 3 and 5 between 1 to 1000
+
+
+SOLN:
+----
+sumofmul=0
+
+for num in range(0,1000):
+  if num%3 == 0 and num%5 == 0:
+    sumofmul+=num
+  
+
+print(sumofmul)
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+8)Display the phone number as below and also print the last 4 digit in ascending order
+
+input : 9993452133
+
+output :xxx-xxx-xxxx
+
+
+SOLN:
+----
+input='9993452133'
+splitlast=input[6:]
+sortlast=sorted(splitlast)
+print(input[0:3] + '-' + input[3:6] + '-' + ''.join(sortlast))
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+9) "There are 26 alphabets in English out of which 5 are vowels and 21 are consonants"
+
+Count the sum of numbers in the above statement using regular expression
+
+
+SOLN:
+----
+import re
+
+pattern="\d+"
+test_str="There are 26 alphabets in English out of which 5 are vowels and 21 are consonants"
+result=re.findall(pattern,test_str)
+print(result)
+sum=0
+for num in result:
+  sum+=int(num)
+
+print(sum) 
+
+---------------------------------------------------------------------------------------------------------------------------- 
+
+10) anagram : sample inputs : tear, rate ; Find if these words are anagram or not. Program should accept two inputs from user.
+
+
+SOLN:
+-----
+
+str1=input("Enter first string: ")
+str2=input("Enter the second string:")
+
+if sorted(str1) == sorted(str2):
+  print("They are anagrams")
+else:
+  print("They are not anagrams")
+
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+11) With a given integral number n, change the program to generate a dictionary that contains (i, cube of i) such that is an integral number between 1 and n (both included).
+
+and then the program should print the dictionary.
+
+Suppose the following input is supplied to the program:
+
+7
+
+Then, the output should be:
+
+{1: 1, 2: 8, 3: 27, 4: 64, 5: 125, 6: 216, 7: 373}
+
+Take the input from the user via console.
+
+
+
+SOLN:
+-----
+integral=int(input("Enter a number:"))
+n=integral+1
+cubedict={}
+for num in range(1,n):
+  cubedict[num]=num ** 3
+
+print(cubedict) 
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+12) find if the below numbers are Armstrong number
+
+ 
+
+a: 153
+
+b:1634
+
+c: 876
+
+
+SOLN:
+------
+
+input_num = int(input("Enter any number: "))
+length = len(str(input_num))                 #u can find the length for a string only
+num = 0
+val = int(input_num)                            #since we converted it to a str in the before step we must convert it back to int
+
+while val > 0:
+  rem = val % 10
+  num += rem ** length
+  val //= 10
+    
+if int(input_num) == num:                          //here val value is changed so we cant replace int(input_num) with val
+        print('It is an armstrong number')
+else:
+        print('It is not an armstrong number')
