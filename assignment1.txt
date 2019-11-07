@@ -1,0 +1,336 @@
+1.
+Write a program that examines three variables—x, y, and z— and prints the largest odd number among them. 
+If none of them are odd, it should print a message to that effect.
+
+x=int(input("Enter 1st number"))
+y=int(input("Enter 2nd number"))
+z=int(input("Enter 3rd number"))
+list1=[]
+if x%2!=0:
+    list1.append(x)
+if y%2!=0:
+    list1.append(y)
+if z%2!=0:
+    list1.append(z)
+largest=0
+for i in list1:
+    if i>largest:
+        largest=i
+if largest>0:
+    print(largest)
+else:
+    print("not an odd number")
+
+output:
+------
+Enter 1st number2
+Enter 2nd number4
+Enter 3rd number6
+not an odd number
+
+Enter 1st number 2
+Enter 2nd number 5
+Enter 3rd number 3
+5
+
+
+2.Python provides a built-in function called len that returns the length of a string, so the value of len('Cigna') is 5.
+ Write a function named right_justify that takes a string named s as a parameter and prints the string with enough
+leading spaces so that the last letter of the string is in column 70 of the display.
+
+
+def right_justify(s):
+    print("%70s" %s)
+
+right_justify('cigna')
+
+
+output:
+------
+
+                                                                 cigna
+
+
+3.
+#Write a program that asks the user to input 10 integers, and then prints the largest odd number that was entered.
+# If no odd number was entered, it should print a message to that effect.
+
+numlist=[]
+largest=0
+n = int(input("Enter number of elements"))
+# take list as input from user and put it in an empty list
+for i in range(0,n):
+    element=int(input())
+    numlist.append(element)
+
+# to traverse through the list and find the largest among them
+for j in numlist:
+    if j%2!=0 and j>largest:                # give largest as 0 initially
+        largest=j                    # if j is odd and largest when traversed using for loop - j will be largest
+if largest==0 :               #if thr is no odd number then largest will be 0 only - which makes it a list of even numbers - so print no                                 #odd numbers - else just print the largest
+      print("there were no odd numbers")
+else:
+    print(largest)
+
+
+OUTPUT:
+-------
+Enter number of elements 10
+1
+2
+3
+4
+5
+6
+7
+8
+9
+1
+`
+9
+
+
+4.Practice using the Python interpreter as a calculator:
+
+a) The volume of a sphere with radius r is 4/3pr3. What is the volume of a sphere with radius 5?
+Hint: 392.7 is wrong!
+b) Suppose the cover price of a book is Rs.24.95, but bookstores get a 40% discount. Shipping costs
+Rs.3 for the first copy and 0.75p for each additional copy. What is the total wholesale cost for
+60 copies?
+c) If I leave my house at 6:52 am and run 1 mile at an easy pace (8:15 per mile), then 3 miles at
+tempo (7:12 per mile) and 1 mile at easy pace again, what time do I get home for breakfast?
+
+
+a)
+def volume(a):
+    pi=3.14
+    V=4.0/3.0*3.14* a**3
+    return V;
+
+result=volume(5)
+print("The volume of the sphere is: ",result)
+
+
+OUTPUT:
+-------
+The volume of the sphere is:  523.3333333333334
+
+
+b)book_price=24.95                              # price of one book without discount
+discount=0.4                                     # amount of discount
+first_copy_cost=3.0                          # shipping cost  of the first book alone
+additional_copy_cost=0.75                           # shipping cost of the rest of the 59 books
+total_book=60                                     # total no. of books
+single_book_price=book_price*discount         #discount price of one book
+sale_price=book_price-single_book_price       # selling price of the discounted book
+
+first_copy=(sale_price+first_copy_cost)*1            #shipping cost+sale price of first book
+additional_copy=sale_price*59+additional_copy_cost*59    #cost for the rest
+
+
+print("the wholesale cost of 60 copies is ",additional_copy+first_copy)
+
+
+OUTPUT:
+-------
+the wholesale cost of 60 copies is  945.4499999999999
+
+
+
+c)starttimehr = 6 + (52 / 60.0)                    # here 6 is hr 52 is min we convert 52 to hr
+easyhr = (8 + (15 / 60.0 )) / 60.0                 #15 to min , 0.25+8 converted to hr
+tempohr = (7 + (12 / 60.0)) / 60.0                 #12 to min , 0.2+8 converted to hr
+runtimehr = 2 * easyhr + 3 * tempohr              # 2 miles for easy and 3 miles for tempo
+breakfasthr = starttimehr + runtimehr                 # here we calculate the total time
+breakfastmin = (breakfasthr-int(breakfasthr))*60       # here 7.5-7=0.5 , 0.5 is the hr i.e. 30 mins
+print ('Finish time was %d:%d' % (breakfasthr,breakfastmin))  #%d will print the int value
+
+
+OUTPUT:
+------
+Finish time was 7:30
+
+
+5.Write a program that asks the user to enter an integer and prints two integers, root and pwr, such that 0 < pwr < 6 and root**pwr is equal to the integer entered by the user. If no such pair of integers exists, it should print a message to that effect.
+
+a=int(input("Enter an integer "))
+root=0
+pwr=0
+
+while root<=a:        # here root=0 first - whr a>= the root - a must not be negative
+    root+=1            # root is incremented to 1 since root star
+    while pwr<6:         #pwr value must be below 6
+        pwr+=1             #pwr must start from 1 and is incremented later
+        if root**pwr==a:     # so if the this value is equal to the input number then its printed else it comes out pwr becomes 0 and                                   #pwr+=1 is implemented
+            print(root,pwr)
+    pwr=0
+ 
+ 
+ OUTPUT:
+ -------
+ Enter an integer 8
+ 2 3
+ 8 1
+    
+6.
+#Let s be a string that contains a sequence of decimal numbers separated by commas, e.g., s = '1.23,2.4,3.123'.
+# Write a program that prints the sum of the numbers in s.
+
+str1=input("enter a string of numbers separated by comas")
+nums=[float(i) for i in str1.split(",")]                # creates a list of floats spilt by ,
+print(sum(nums))                                      # sum() finds the sum of the elements in the list
+
+
+OUTPUT:
+-------
+enter a string of numbers separated by comas1.23,3.45,5.67
+10.35
+
+
+7.Write a function isIn() that accepts two strings as arguments and returns True if either string occurs anywhere in the other, and False otherwise. Hint: you might want to use the built-in str operation in.
+
+def isIn(x, y):
+    if x in y:
+        return True
+    elif y in x:
+        return True
+    else:
+        return False
+
+
+status=isIn(input("enter a string"),input("enter another string"))
+print("the status is: ",status)
+
+
+OUTPUT:
+------
+enter a string hello
+enter another string hell
+the status is:  True
+
+
+8.Implement a function that satisfies the specification. Use a try-except block.
+
+def getRatios(vect1, vect2):
+	"""Assumes: vect1 and vect2 are lists of equal length of numbers
+	Returns: a list containing the meaningful values of
+	vect1[i]/vect2[i]"""
+ 
+ 
+ 
+ def getRatios(vect1,vect2):
+    ratio=[]
+
+    for i in range(0,len(vect1)):
+        try:
+            ratio.append(vect1[i]/(vect2[i]))
+        except :
+            ratio.append("invalid")
+
+    return ratio
+
+ratio1=[1,2,3,4,5]
+ratio2=[6,7,8,9,1]
+res=getRatios(ratio1,ratio2)
+print(res)
+
+
+output:
+-------
+[0.16666666666666666, 0.2857142857142857, 0.375, 0.4444444444444444, 5.0]
+    
+
+9.Assume that we execute the following assignment statements: width = 17 height = 12.0 delimiter = '.' For each of the following expressions, write the value of the expression and the type (of the value of the expression).
+>>> width/2
+>>> width/2.0
+>>> height/3
+>>> 1 + 2 * 5
+>>> delimiter * 5
+Use the Python interpreter to check your answers
+
+
+
+width = 17
+height = 12.0
+delimiter = '.'
+a=width/2
+print(a)
+print(type(a))
+
+b=width/2.0
+print(b)
+print(type(b))
+
+c=height/3
+print(c)
+print(type(c))
+
+d=1 + 2 * 5
+print(d)
+print(type(d))
+
+e=delimiter * 5
+print(e)
+print(type(e))
+
+
+
+OUTPUT:
+------
+8.5
+<class 'float'>
+8.5
+<class 'float'>
+4.0
+<class 'float'>
+11
+<class 'int'>
+.....
+<class 'str'>
+
+
+10.Observe the Code Snippet
+x = 25
+epsilon = 0.01
+numGuesses = 0
+low = 0.0
+high = max(1.0, x)
+ans = (high + low)/2.0
+while abs(ans**2 - x) >= epsilon:
+print 'low =', low, 'high =', high, 'ans =', ans
+numGuesses += 1
+if ans**2 < x:
+low = ans
+else:
+high = ans
+ans = (high + low)/2.0
+print 'numGuesses =', numGuesses
+print ans, 'is close to square root of', x
+
+a. What would the code above return if the statement x = 25 were replaced by x = -25?
+
+b. What would have to be changed to make the code above for finding an approximation to the cube root of both negative and positive numbers? (Hint: think about changing low to ensure that the answer lies within the region being searched.)
+
+
+
+a) x = -25
+epsilon = 0.01
+numGuesses = 0
+low = 0.0
+high = max(1.0, x)
+ans = (high + low)/2.0
+while abs(ans**2 - x) >= epsilon:
+    print('low =', low, 'high =', high, 'ans =', ans)
+    numGuesses += 1
+if ans**2 < x:
+    low = ans
+else:
+    high = ans
+ans = (high + low)/2.0
+print('numGuesses =', numGuesses)
+print(ans, 'is close to square root of', x)
+
+
+output:
+------
+low=0.0 high=1.0 ans=0.5

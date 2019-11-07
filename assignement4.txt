@@ -1,0 +1,116 @@
+2.Create simple banking process using class and function
+
+Example class/functions:
+
+new_user
+
+offer
+
+debit_card_issue., etc
+
+
+
+
+class Bank:
+	balance=0
+	def new_user(self):
+		print("Congrats,you have won 1000 rupees as a new user")
+		balance=1000
+		
+	def depositamt(self): 
+		
+        	depoamount = int(input("Enter amount you want to deposited:")) 
+		print("Amount Deposited",depoamount)
+        	balance=balance+depoamount 
+
+        	
+	def withdrawamt(self):
+
+        	withdrawamount = int(input("Enter amount to be withdrawn: ")) 
+
+        	if balance >= withdrawamt: 
+            		balance=balance-withdrawamt 
+            		 
+        	else: 
+            		print("Insufficient balance") 
+
+	def totalbalance(self):
+		print("Net Balance:",balance)
+
+user1 = Bank() 
+user1.new_user() 
+user1.depositamt() 
+user1.withdrawamt() 
+user1.totalbalance()
+	
+
+
+
+
+4.Read the IP Addresses from the file using regular expression
+ 
+import re
+
+file=open("IPADD.txt","r")
+readd=file.readlines()
+for address in readd:
+	result=re.match('1[0-9][0-9]|2[0-5][0-5]\.1[0-9][0-9]|2[0-5][0-5]\.1[0-9][0-9]|2[0-5][0-5]\.1[0-9][0-9]|2[0-5][0-5]',address)
+	if result:
+		print("%s It is a valid IP address" %address)
+
+	else:
+		print("%s Not a valid IP address" %address)
+
+
+
+
+
+
+
+1.Create user defined exceptino for capturing image files which is .jpg, .jpeg, .png etc.,
+
+
+
+class captureimgfiles(Exception):
+	
+
+	
+	try:
+	
+		filename=input("Enter the filename:")
+		listofext=["png","jpeg","jpg","gif","psd"]
+		extension=filename.split('.')
+		if extension[1] in listofext:
+			raise captureimgfiles
+
+	except captureimgfiles:
+		print("The file is an image file.Please enter another file")
+
+
+
+
+3.Create student information file (xlsx format) from database.
+
+the table should contain 10 columns minimum
+
+ 
+
+get the list of student's identiy number input from the text file (.txt)
+
+
+
+
+
+import mysqldb
+
+conn=mysqldb.connect('localhost','username','password','studentdb')
+cursor=mysqldb.cursor()
+output=cursor.execute("select * from studetails")
+output1=output.fetchall()
+print(output1)
+
+
+with open("details.txt","a") as file:
+	writefile=csv.writer(file,delimiter=",")
+	writer.writerow(output1)
+		

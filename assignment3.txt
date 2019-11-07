@@ -1,0 +1,95 @@
+#1.Write a Python program to combine each line from first file with the corresponding line in second file
+
+
+#2.Count new lines in file
+
+
+num_lines = 0
+filenew=open("C:/Users/karishma.murali/Desktop/file11.txt", 'r')
+for i in file11.readlines(  ): 
+	num_lines += 1
+print("Number of lines:")
+print(num_lines)
+
+
+#3.
+#Write a Python function that accepts a string and calculate the number of upper case letters and lower case letters.
+
+
+Sample String : 'The quick Brow Fox'
+Expected Output : 
+No. of Upper case characters : 3
+No. of Lower case Characters : 12
+def upperlower(str1):
+	
+	list1 = list(str1.split(' '))
+	cntlower=0
+	cntupper=0
+	for i in list1:
+		if i.isupper()==0:
+			cntupper=cntupper+1
+		elif i.islower()==0:
+			cntlower=cntlower+1		
+
+	print(cntupper)
+	print(cntlower)
+
+
+
+res1,res2 = upperlower(input("Enter a string"))
+print(res)
+
+
+#4.
+#Write a Python function that takes a list and returns a new list with unique elements of the first list. Without using set
+#Sample List : [1,2,3,3,3,3,4,5]
+#Unique List : [1, 2, 3, 4, 5]
+
+def uniquenum(numlist):
+	newlist=[]
+	for i in numlist:
+		if i not in list2:
+			newlist.append(i)
+
+	return newlist
+
+
+numlist=[1,2,2,3,4,4,5,6,7,7]
+result=uniquenum(numlist)
+print(result)
+
+
+#5.
+#Write a Python function to check whether a string is a pangram or not. 
+
+
+#Note : Pangrams are words or sentences containing every letter of the alphabet at least once.
+#For example : "The quick brown fox jumps over the lazy dog"
+
+
+def is_panagram(str1):
+	lowerletters=str1.lower()
+	letters = "abcdefghijklmnopqrstuvwxyz"
+    	for letter in letters: 
+        if letter not in lowerletters: 
+            return "not a panagram"
+  	else:
+		return "it is a panagram"
+    
+      
+ 
+str1 = input("Enter a string")
+result=is_panagram(str1)
+
+      
+
+#6.
+#Write a Python program that accepts a hyphen-separated sequence of words as input and prints the words in a hyphen-separated sequence after sorting them alphabetically. 
+
+
+#Sample Items : green-red-yellow-black-white
+#Expected Result : black-green-red-white-yellow
+
+result=[i for i in input().split('-')]
+result.sort()
+print('-'.join(result))

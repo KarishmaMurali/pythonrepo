@@ -1,0 +1,297 @@
+1.The greatest common divisor (GCD) of a and b is the largest number that divides both of them with no remainder. 
+One way to find the GCD of two numbers is based on the observation that if r is the remainder when a is divided by b, then gcd(a, b) = gcd(b, r). 
+As a base case, we can use gcd(a, 0) = a. Write a function called gcd that takes parameters a and b and returns their greatest common divisor.
+
+
+def gcd(a,b):
+    if(b==0):
+        return a
+    else:
+        return gcd(b,a%b)             #recursive function
+                                      #it will keep finding modulus of the two numbers till its 0 - when its 0 it prints the first number
+
+
+a=int(input("Enter first number:"))
+b=int(input("Enter second number:"))
+result=gcd(a,b)
+print("GCD is: ",result)
+
+
+
+OUTPUT:
+-------
+Enter first number: 24 
+Enter second number: 8
+GCD is:  8
+
+Enter first number: 27
+Enter second number: 5
+GCD is:  1
+
+
+
+2.# A number, a, is a power of b if it is divisible by b and a/b is a power of b.
+# Write a function called is_power that takes parameters a and b and returns True if a is a power of b.
+# Note: you will have to think about the base case.
+
+
+
+def is_power(a,b):
+
+    if a % b == 0:                           # here we first see if the first number is divisible by the second number
+        for i in range(1,a):                 # now we find if in the range of 1 to a - if i is a power of a
+            if b ** i == a:                   # here we check if the second number with the range is equal to the first number we gave
+                return True
+    else:
+        return False
+
+
+result = is_power(int(input()),int(input()))
+print(result)
+
+
+
+OUTPUT:
+------
+125
+6
+False
+
+
+125
+5
+True
+
+
+3.# Observe the following function definitions.They Calculate the Factorial as per the Mathematical definition 1! = 1(n + 1)! = (n + 1) * n!
+# Implement factI(n) as an Iterative Implementation & factR(n) as a Recursive Implementation
+#
+#
+# def factI(n):
+#     """Assumes that n is an int > 0
+#     Returns n!
+#     Uses Iterative Implementation"""
+#
+#
+# def factR(n):
+#     """Assumes that n is an int > 0
+#     Returns n!
+#     Uses Recursive Implementation"""
+
+
+def factR(n):
+    if n == 1:
+        return 1
+    else:
+        return n*factR(n-1)
+
+result = factR(int(input("Enter a number")))
+print("factorial:",result)
+
+def factI(n):
+    fact=1
+    i=1
+    for i in range(1,n+1):
+        fact=fact*i
+        
+    return fact
+
+
+result = factI(int(input("Enter a number")))
+print("factorial:",result)
+
+
+
+OUTPUT:
+------
+Enter a number 12
+factorial: 479001600
+
+
+
+4.#Write a program that computes the decimal equivalent of the binary number 10011?
+
+def binary2decimal(binary):
+    decimal = 0
+    i = 0
+    while binary != 0:
+        dec = binary % 10
+        decimal = decimal + dec * pow(2, i)
+        binary = binary // 10
+        i += 1
+    return decimal
+
+
+result = binary2decimal(10011)
+print(result)
+
+
+
+'''binary = input("Enter a number:")
+decimal = 0
+for digit in binary:
+    decimal=decimal*2+ int(digit)
+print(decimal)'''
+
+
+
+OUTPUT:
+------
+19
+
+
+
+5.# Implement a function that meets the specification below. Use a try-except block.
+#
+# def sumDigits(s):
+# 	"""Assumes s is a string
+# 	Returns the sum of the decimal digits in s
+# 	For example, if s is 'a2b3c' it returns 5"""
+
+def sumofdigits(str1):
+    sum = 0
+    for i in str1:
+        if i.isdigit() == True:          #string function to see if thr is a digit in the given string
+            z = int(i)                  #since its from a string - we first convert it to integer then add it to sum
+            sum = sum + z
+
+    return sum
+
+
+print(sumofdigits('12a34ff56h7'))
+
+
+
+output:
+-------
+28
+
+
+
+6.# Implement a function that satisfies the specification. Use a try-except block.
+# def findAnEven(l):
+# 	"""Assumes l is a list of integers
+# 	Returns the first even number in l
+# 	Raises ValueError if l does not contain an even number"""
+
+def findaneven(l):
+    try:
+        for number in l:
+            if number % 2 == 0:
+                print(number)
+                break
+
+
+l = [1,2,3,4,5,6,7,8]
+res = findaneven(l)
+print(res)
+
+
+
+
+
+7.# A palindrome is a word that is spelled the same backward and forward, like "Malayalam" and "Noon" .
+# Recursively, a word is a palindrome if the first and last letters are the same and the middle is a palindrome.
+# Write a function called is_palindrome that takes a string argument and returns True if it is a palindrome and False otherwise.
+# Remember that you can use the built-in function len to check the length of a string.
+# Use the function definition
+# def isPalindrome(s):
+# 	"""Assumes s is a str
+# 	Returns True if s is a palindrome; False otherwise.
+# 	Punctuation marks, blanks, and capitalization are
+# 	ignored."""
+# Ensure you build a test function testIsPalindrome() that tests your palindrome function.
+
+
+def ispalindrome(s):
+    w = ""
+    for i in s:
+        w = i + w
+    if s == w:
+        return True
+    else:
+        return False
+
+def testispalindrome():
+
+    s = input()
+    status = ispalindrome(s)
+
+    if status == True:
+        return "it is a palindrome"
+    else:
+        return "It is not a palindrome"
+
+
+print(testispalindrome())
+
+
+
+OUTPUT:
+-------
+lol 
+it is a palindrome
+
+dog
+It is not a palindrome
+
+
+
+8.# The built-in function eval takes a string and evaluates it using the Python interpreter. For example:
+# >>> eval('1 + 2 * 3')
+# 7
+# >>> import math
+# >>> eval('math.sqrt(5)')
+# 2.2360679774997898
+# >>> eval('type(math.pi)')
+# <type 'float'>
+# Write a function called eval_loop that iteratively prompts the user, takes the resulting input and evaluates it using eval, and prints the result.
+# It should continue until the user enters 'done', and then return the value of the last expression it evaluated.
+
+
+def eval_loop():
+    while True:
+        n = input("Enter a string:")
+        if n == 'done':
+            break
+        else:
+            result = eval(n)
+            print(result)
+    print(result)
+
+eval_loop()
+
+
+OUTPUT:
+-------
+Enter a string:1*4+6-4
+6
+Enter a string:done
+6
+
+
+9.# One way of computing square roots is Newton’s method. Suppose that you want to know the square root of a.
+# If you start with almost any estimate, x, you can compute a better estimate with the following formula: y = (x + a/x)/2
+# For example, if a is 4 and x is 3:
+# >>> a = 4.0
+# >>> x = 3.0
+# >>> y = (x + a/x) / 2
+# >>> print y
+# 2.16666666667
+# a) Write a function NewtonSqrt() to abstract the Newton's Method of calculation Square roots.
+
+def newtonsqrt(a,x):
+    y=(x+a/x)/2
+    return y
+
+a = int(input("Enter a number:"))
+x = int(input("Enter another number:"))
+res = newtonsqrt(a,x)
+print(res)
+
+
+OUTPUT:
+-------
+4
+3
+2.166666666667
