@@ -1,1 +1,41 @@
+PALINDROME:
+-----------
+s1=str(input())
+s2=s1[::-1]
+if s1==s2:
+  print("yes")
+else:
+  print("no")
+  
+ 
+ 
+SORT THE LIST BASED ON THE LAST LETTER:
+-----------------------------------------
 
+def func(list1):
+  return list1[-1]
+
+list1=['wcap','wccb','wdfk']
+
+print(sorted(list1,key=func))
+
+
+
+OR
+
+
+list1=['wcap','wccb','wdfk']
+
+print(sorted(list1,key=lambda x:x[-1]))
+
+
+EMAIL WITH REGEX:
+-----------------
+import re
+email="kachu1@gmail.com"
+pattern="[0-9a-z]*@([a-z])*\.com$"
+result=re.match(pattern,email)
+if result:
+  print("yes")
+else:
+  print("no")
