@@ -1,0 +1,453 @@
+1) write a python script to get a student details from user using raw_input:
+
+i) roll_id
+
+ii) name
+
+iii) class name
+
+iv) marks - '58,67,89,99'
+
+ 
+
+# not going to declare the dictionary 
+
+stud_dict = { 'roll_id':{'name':'sakthi','class':'7','marks':[1,2,3,4,5]},
+
+              'roll_id2':{'name':'sakthi2','class':'8','marks':[1,2,3,4,56]}
+
+            }
+
+hints:
+
+d ={}
+
+d[k] = sub_dict
+
+sub_dict[k] =v
+
+
+
+
+SOLN:
+-----
+
+dict={}
+dict['roll_id1']={}
+dict['roll_id2']={}
+print("Enter the name,class and marks one after the other")
+dict['roll_id1']['name:']=input()
+dict['roll_id1']['class:']=int(input())
+dict['roll_id1']['marks']=list(input())
+dict['roll_id2']['name:']=input()
+dict['roll_id2']['class:']=int(input())
+dict['roll_id2']['marks']=list(input())
+print(dict)
+
+
+SOLN:
+-----
+
+dict1={}
+subdict={}
+while(1):
+    roll_id=input("enter the roll no:")
+    name=input("enter the name:")
+    class_name=input("enter the class:")
+    marks=input("enter the marks:")
+    mark=marks.split(",")
+    for num in range(len(mark)):
+        mark[num]=int(mark[num])
+    subdict['name']=name
+    subdict['class']=class_name
+    subdict['marks']=mark
+    dict1[roll_id]=subdict
+    choice=input("do you want to add another record y/n")
+    if choice=='n':
+        break
+print(dict1)
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+ 
+
+2)
+
+a)Given the following dictionary:
+
+      inventory = {
+
+                   'gold' : 500,
+
+                   'pouch' : ['flint', 'twine', 'gemstone'],
+
+                   'backpack' : ['xylophone','dagger', 'bedroll','bread loaf']
+
+                }
+
+       Try to do the followings:
+
+       i)Add a key to inventory called 'pocket'.
+
+       ii)Set the value of 'pocket' to be a list consisting of the strings 'seashell', 'strange berry', and 'lint'.
+
+       iii).sort()the items in the list stored under the 'backpack' key.
+
+       iv)Then .remove('dagger') from the list of items stored under the 'backpack' key.
+
+       v)Add 50 to the number stored under the 'gold' key.
+
+SOLN:
+-----
+
+inventory = {
+'gold' : 500,
+'pouch' : ['flint', 'twine''gemstone'],
+'backpack' : ['xylophone','dagger', 'bedroll','bread loaf']
+}
+
+inventory['pocket']=['seashell', 'strange berry', 'lint']
+print(inventory)
+
+OR
+
+inventory.update({'pocket':['seashell', 'strange berry','lint']})
+
+sorted(inventory.get('backpack'))     
+print(inventory)
+
+OR
+
+inventory['backpack'].sort()
+print(inventory)
+
+
+inventory.get('backpack').remove('dagger')   #empty string
+print(inventory)
+
+inventory['gold']+=50
+print(inventory)
+
+-----------------------------------------------------------------------------------------------------------------------
+
+b) create a student details dictionary having {'student1':[marks1,marks2, marks3],'student2':[marks1,marks2,marks3]}
+
+       i)Create the dictionary as mentioned above
+
+       ii) need to perform total and average of the marks for each student
+
+
+studentdict={}
+studentdict['student1']=[100,123,143]
+studentdict['student2']=[40,56,32]
+sumofstu1=0
+sumofstu2=0
+for marks1 in studentdict.get('student1'):
+	sumofstu1+=int(marks1)
+avgofstu1=sumofstu1/3
+
+for marks2 in studentdict.get('student2'):
+	sumofstu2+=int(marks2)
+avgofstu2=sumofstu2/3
+
+print(sumofstu1)
+print(sumofstu2)
+print(avgofstu1)
+print(avgofstu2)
+
+ 
+OR
+
+
+student={}
+while(1):
+    rollno=input("enter the student roll no")
+    marks=input("enter the marks1 mark2 mark3")
+    mar=marks.split(",")
+    for i in range(len(mar)):
+        mar[i]=int(mar[i])
+    student[rollno]=mar
+    choice=input("do you want to add another record y/n")
+    if choice=='n':
+        break
+for k,v in student.items():
+    sum=0
+    avg=0.0
+    for i in v:
+        sum+=i
+    avg=sum/len(v)
+    print(k,sum,avg)
+
+
+OR
+
+'''student={'vishali':[90,95,85],'soundrya':[95,100,80]} 
+ avg=0 
+ for key,value in student.items(): 
+     total = 0 
+     for i in value: 
+         total+=i 
+     print key,"total:",total 
+     print key, "avg:",total/len(value) 
+
+------------------------------------------------------------------------------------------------------------------------------
+
+c)  write the below contents to  a file named 'marks.txt' using python script
+
+science = 50
+
+maths = 90
+
+english = 85
+
+tamil = 92
+
+ 
+
+       i) read the file and calculate the total sum of marks available there
+
+ 
+import re
+file1=open('marks.txt',r)
+list1=[]
+sumofdigits=0
+
+for marks in file1:
+	list1.extend(re.findall('\d+',marks)
+
+print(list1)
+
+for mark in list1:
+	sumofdigits+=int(mark)
+print(sumofdigits) 
+
+
+OR
+
+
+'''with open('marks.txt','w') as f1: 
+     f1.writelines(['science=50\n','maths=90\n','english=85\n','tamil=92\n']) 
+ import re 
+ list2=[] 
+ with open('marks.txt','r') as f1: 
+     for line in f1: 
+         value=re.findall(r'[0-9]+',line) 
+         list2.extend(value) 
+     print list2 
+     print reduce((lambda x,y: int(x)+int(y)),list2) 
+
+
+OR
+
+
+--------------------------------------------------------------------------------------------------------------------------
+
+i) write a python script to make a simple calculator that can add, subtract, multiply and divide using functions 
+
+   a) have four functions with two arguments
+
+   b) get the values from user
+
+   c) Use try and except 
+
+
+def add(a,b):
+ return a+b
+
+def subtract(a,b):
+  return a-b
+
+def mul(a,b):
+  return a*b
+
+def div(a,b):
+  return a//b
+
+
+
+
+try:
+	a,b=int(input("Enter first number")),int(input("Enter the second number"))
+
+
+result1=add(a,b)
+print(result1)
+
+result2=subtract(a,b)
+print(result2)
+
+result3=mul(a,b)
+print(result3)
+
+result4=div(a,b)
+print(result4)
+ 
+except ValueError:
+	print("not a number")
+except Exception as e:
+	print(e)
+
+
+OR
+
+def add(n1,n2):
+    return n1+n2
+
+def sub(n1,n2):
+    return n1-n2
+
+def mul(n1,n2):
+    return n1*n2
+
+def div(n1,n2):
+    try:
+        return n1/n2
+    except ZeroDivisionError:
+        print("ZeroDivisionError")
+
+try:
+    n1=int(input("enter number1"))
+    n2=int(input("enter number2"))
+    print(add(n1,n2))
+    print(sub(n1,n2))
+    print(mul(n1,n2))
+    print(div(n1,n2))
+except ValueError:
+    print("str is not allowed")
+except Exception as e:
+    print(e)
+
+
+OR
+
+'''def add(a,b): 
+70     return a+b 
+71 def sub(a,b): 
+72     return abs(a-b) 
+73 def mul(a,b): 
+74     return a*b 
+75 def div(a,b): 
+76     return a/b 
+77 def goto(): 
+78     try: 
+79         a=int(raw_input("enter a value:")) 
+80         b=int(raw_input("enter b value:")) 
+81         if type(a)!=int and type(b)!=int: 
+82             raise Exception; 
+83         else: 
+84             return a,b 
+85     except Exception: 
+86         print "pls enter only integers" 
+87         return goto() 
+88 
+ 
+89 a,b=goto() 
+90 # print a,b 
+91 choice=raw_input("enter choice:") 
+92 if choice=="sum": 
+93     print add(a,b) 
+94 elif choice=="sub": 
+95     print sub(a,b) 
+96 elif choice=="mul": 
+97     print mul(a,b) 
+98 else: 
+99     print div(a,b) 
+
+---------------------------------------------------------------------------------------------------------
+
+
+ii)Define a function that can accept two strings as input and concatenate them and then print it as a output
+
+a=0
+def constr(str1,str2):
+  a=str1+str2
+
+str1,str2=input(),input()
+result=constr(str1,str2)
+print(result)
+
+----------------------------------------------------------------------------------------------------------------------- 
+
+iii) write a python script having functions defined to perfrom - sum_digits(1738)
+
+output should be 1+7+3+8 = 18
+
+
+SOLN:
+------
+
+def sum_digits(num): 
+   
+    sum = 0
+    while (num != 0): 
+      
+        sum = sum + int(num% 10) 
+        num = int(num//l10) 
+      
+    return sum
+  
+num = int(input("Enter the number"))
+print(sum_digits(num))
+
+------------------------------------------------------------------------------------------------------------------
+
+iv)  write the below contents to  a file named 'marks.txt' using python script using functions
+
+science = 50
+
+maths = 90
+
+english = 85
+
+tamil = 92
+
+       i) read the file and calculate the total sum of marks available there
+
+def read_file():
+
+def write_file():
+
+
+SOLN:
+----
+import re
+def write_file():
+    f1=open("c:\\python\\marks.txt","w")
+    f1.write("science = 50 \nmaths = 90 \nenglish = 85 \ntamil = 92")
+    f1.close()
+
+
+def read_file():
+    f2=open("c:\\python\\marks.txt","r")
+    mark=[]
+    sum=0
+    for i in f2:
+        mark.extend(re.findall("[0-9]+",i))
+    for i in mark:
+        sum+=int(i)
+    print(sum)
+
+write_file()
+read_file()
+
+
+OR
+
+
+'''def write_file(list1): 
+123     with open('marks.txt','w') as f1: 
+124         f1.writelines(list1) 
+125         print "file created" 
+126 def raed_file(): 
+127     import re 
+128     list2=[] 
+129     with open('marks.txt','r') as f1: 
+130         for line in f1: 
+131             value=re.findall(r'[0-9]+',line) 
+132             list2.extend(value) 
+133         print list2 
+134         print reduce((lambda x, y: int(x)+int(y)),list2) 
+135 list1=['science=50\n','maths=90\n','english=85\n','tamil=92\n'] 
+136 write_file(list1) 
+137 raed_file()''' 
