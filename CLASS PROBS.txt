@@ -84,3 +84,39 @@ SORT DICTIONARY BY VALUES:
 --------------------------
 dict1={3:'b',1:'a',2:'e',4:'c'}
 print(sorted(dict1.items(), key=lambda x: x[0]))
+
+
+
+# astring = "Hello world!"
+# afewwords = astring.split(" ")
+# print(afewwords)
+
+# string="hello hi hello"
+# print(string.lstrip("hello"))
+
+# music = ['Metallica','Rolling Stones','ACDC','Black Sabbath', 'Shinedown']
+# print('\n'.join(music))
+
+# months = { 1 : "January", 
+#      	2 : "February", 
+#     	3 : "March", 
+#         4 : "April", 
+#      	5 : "May", 
+#      	6 : "June", 
+#     	7 : "July",
+#         8 : "August",
+#      	9 : "September", 
+#     	10 : "October", 
+#         11 : "November",
+#     	12 : "December" } 
+    
+# # print(months.keys())
+# # print(months.values())
+# # print(months)
+# # for key, value in months.iteritems():
+# #     print(key, value)
+# z = months.has_key("May")
+# print(z)
+for x in range(1, 11):
+  for y in range(1, 11):
+    print('%d * %d = %d' % (x, y, x*y))
