@@ -64,3 +64,23 @@ PANAGRAM:
 # else:
 #   print("Not")
 
+
+
+SWAP FIRST LETTER AND LAST LETTER:
+-----------------------------------
+list1=['a','b','c','d']
+count=0
+for i in list1:
+    count+=1
+    
+print(count)
+
+list1[0],list1[count-1]=list1[count-1],list1[0]
+
+print(list1)
+
+
+SORT DICTIONARY BY VALUES:
+--------------------------
+dict1={3:'b',1:'a',2:'e',4:'c'}
+print(sorted(dict1.items(), key=lambda x: x[0]))
