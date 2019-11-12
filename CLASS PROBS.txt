@@ -41,3 +41,26 @@ else:
   print("no")
 
 
+PANAGRAM:
+---------
+
+# strinput=input()
+# alpha='abcdefghijklmnopqrstuvwxyz'
+
+# lowerin=strinput.lower()           #convert to lower classmethod
+
+# setstr=set(lowerin)               #removes the duplicates
+
+# print(setstr)
+
+# flag=1
+# for i in alpha:
+#   if i not in setstr:
+#     flag=0
+#     break
+  
+# if flag==1:
+#   print("panagram")
+# else:
+#   print("Not")
+
