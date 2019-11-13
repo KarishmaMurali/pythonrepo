@@ -1,0 +1,76 @@
+'''importing random package'''
+import random
+def rng():
+    ''' function to find random numbers '''
+    return random.random()
+
+
+
+'''importing modules'''
+
+import unittest
+import randomcalc
+
+class Testrng(unittest.TestCase):
+    '''write test cases'''
+    def test1_rng(self):
+        '''check if true'''
+        flag = False
+        test = randomcalc.rng()
+        if test > 0 and test < 1:
+            flag = True
+        self.assertTrue(flag)
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+
+
+COVERAGE:
+---------
+
+IN TERMINAL:
+------------
+(venv) C:\Users\karishma.murali\PycharmProjects\calculator>pip install coverage
+
+(venv) C:\Users\karishma.murali\PycharmProjects\calculator>coverage run test_rng.py
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+(venv) C:\Users\karishma.murali\PycharmProjects\calculator>coverage report
+Name            Stmts   Miss  Cover
+-----------------------------------
+randomcalc.py       3      0   100%
+test_rng.py        12      0   100%
+-----------------------------------
+
+
+
+PEP8:
+------
+
+pip install pylint
+pylint test_rng.py
+pylint randomcalc.py
+
+
+REQUIREMENTS:
+--------------
+coverage==4.5.4
+pip==19.3.1
+pylint==1.9.5
+
+
+
+from setuptools import setup,find_packages
+
+setup(
+    name='rngegg',
+    version='1.0.0',
+    packages=find_packages(execute=['*tests*'])
+
+)
