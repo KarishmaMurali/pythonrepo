@@ -129,5 +129,13 @@ for x in range(1, 11):
 # print(my_list)
 
 
+FIND CONSONANTS IN A STRING USING COMPREHENSION:
+-----------------------------------------------
+vowels='aeiou'
+strin='helloiamwehty'
+list1=[]
+list1=[i for i in strin if i not in vowels]
+print(list1)
+
 
 
